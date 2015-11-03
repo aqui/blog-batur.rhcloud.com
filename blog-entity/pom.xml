@@ -9,5 +9,18 @@
 		<artifactId>blog-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-
+	<dependencies>
+		<!-- Java EE -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>4.3.5.Final</version>
+		</dependency>
+	</dependencies>
 </project>
