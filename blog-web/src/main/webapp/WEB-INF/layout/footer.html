@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>main layout</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8" />
+<link rel="shortcut icon" type="image/x-icon" href="../../resources/images/terminal.ico" th:href="@{/resources/images/terminal.ico}" />
+<link href="../../resources/bootstrap/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet" />
+<link href="../../resources/css/content.css" th:href="@{/resources/css/content.css}" rel="stylesheet" />
+</head>
+<body>
+	<div th:fragment="footer" class="footer">
+		<div class="row">
+			<div class="col-lg-12" align="center">
+				<p>aqui@aqui~$ akif batur</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

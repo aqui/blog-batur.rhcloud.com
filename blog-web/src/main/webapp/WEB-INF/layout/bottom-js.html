@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>bottom-js fragment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="UTF-8" />
+<link rel="shortcut icon" type="image/x-icon" href="../../resources/images/terminal.ico" th:href="@{/resources/images/terminal.ico}" />
+<link href="../../resources/bootstrap/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}" rel="stylesheet" />
+<link href="../../resources/css/content.css" th:href="@{/resources/css/content.css}" rel="stylesheet" />
+</head>
+<body>
+	<div th:fragment="bottom-js">
+		<script src="../../resources/js/jquery-2.1.4.min.js" th:src="@{/webjars/jquery/2.1.4/jquery.js}"></script>
+		<script src="../../resources/bootstrap/js/bootstrap.js" th:src="@{/webjars/bootstrap/3.3.5/js/bootstrap.min.js}"></script>
+	</div>
+</body>
+</html>
