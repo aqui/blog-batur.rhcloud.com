@@ -4,6 +4,5 @@
 .project
 .tern-project
 /diagrams/
-.gitignore~
 .springBeans
 rebel.xml
