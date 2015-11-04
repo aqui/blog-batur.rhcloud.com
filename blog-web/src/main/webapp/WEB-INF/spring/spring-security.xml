@@ -26,13 +26,12 @@
 		<intercept-url pattern="/author**" access="hasRole('ROLE_USER')" />
 		
 		<form-login
-		    default-target-url="/"
 		    login-page="/login"
 		    login-processing-url="/login"
 		    username-parameter="username"
 		    password-parameter="password"
-		    authentication-failure-url="/login?error=failed"
 		    authentication-success-handler-ref="customAuthenticationSuccessHandler"
+		    authentication-failure-handler-ref="customAuthenticationFailureHandler"
 		/>
 		
 		<logout 
@@ -60,7 +59,9 @@
 	</authentication-manager>
 
 	<beans:bean class="com.akifbatur.blog.custom.CustomAuthenticationSuccessHandler" name="customAuthenticationSuccessHandler"/>
-
+	
+	<beans:bean class="com.akifbatur.blog.custom.CustomAuthenticationFailureHandler" name="customAuthenticationFailureHandler"/>
+	
 	<beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 		<beans:constructor-arg name="strength" value="10"/>
 	</beans:bean>

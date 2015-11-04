@@ -26,7 +26,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
             Authentication authentication) throws IOException, ServletException
     {
         // Log user details
-        logger.info("User " + authentication.getName() + " is logged in.");
+        logger.info("User " + authentication.getName() + " is successfully logged-in.");
         logger.info(authentication.getDetails().toString());
         logger.info(authentication.getPrincipal().toString());
         response.setStatus(HttpServletResponse.SC_OK);

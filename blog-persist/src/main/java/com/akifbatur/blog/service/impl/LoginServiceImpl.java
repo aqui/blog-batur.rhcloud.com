@@ -41,11 +41,12 @@ public class LoginServiceImpl implements LoginService, UserDetailsService
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {
+        logger.info("User "+ username +" is trying to login.");
         User user = loginRepository.getUserByUsername(username);
         if (user == null)
         {
-            logger.error("Author login failed: " + username);
-            throw new UsernameNotFoundException("User not found");
+            logger.error("User "+ username +" is not found.");
+            throw new UsernameNotFoundException("Username not found.");
         }
         else
         {
