@@ -31,7 +31,8 @@
 		    login-processing-url="/login"
 		    username-parameter="username"
 		    password-parameter="password"
-		    authentication-failure-url="/login?error"
+		    authentication-failure-url="/login?error=failed"
+		    authentication-success-handler-ref="customAuthenticationSuccessHandler"
 		/>
 		
 		<logout 
@@ -57,6 +58,8 @@
 			<password-encoder ref="encoder"/>
 		</authentication-provider>
 	</authentication-manager>
+
+	<beans:bean class="com.akifbatur.blog.custom.CustomAuthenticationSuccessHandler" name="customAuthenticationSuccessHandler"/>
 
 	<beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 		<beans:constructor-arg name="strength" value="10"/>
