@@ -1,5 +1,7 @@
 package com.akifbatur.blog.repository.impl;
 
+import javax.annotation.PostConstruct;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -17,18 +19,23 @@ import com.akifbatur.blog.repository.CategoryRepository;
  * 
  */
 @Repository("categoryRepository")
-public class CategoryRepositoryImpl implements CategoryRepository 
+public class CategoryRepositoryImpl implements CategoryRepository
 {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(CategoryRepositoryImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(CategoryRepositoryImpl.class);
 
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	@Override
-	public void saveCategory(Category category) 
-	{
-		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(category);
-	}
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    @Override
+    public void saveCategory(Category category)
+    {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(category);
+    }
+    
+    @PostConstruct
+    public void init()
+    {
+        logger.info("CategoryRepository initialized.");
+    }
 }

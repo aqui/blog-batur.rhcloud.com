@@ -1,5 +1,7 @@
 package com.akifbatur.blog.repository.impl;
 
+import javax.annotation.PostConstruct;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -17,18 +19,23 @@ import com.akifbatur.blog.repository.RoleRepository;
  * 
  */
 @Repository("roleRepository")
-public class RoleRepositoryImpl implements RoleRepository 
+public class RoleRepositoryImpl implements RoleRepository
 {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(RoleRepositoryImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(RoleRepositoryImpl.class);
 
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	@Override
-	public void saveRole(Role role) 
-	{
-		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(role);
-	}
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    @Override
+    public void saveRole(Role role)
+    {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(role);
+    }
+    
+    @PostConstruct
+    public void init()
+    {
+        logger.info("RoleRepository initialized.");
+    }
 }

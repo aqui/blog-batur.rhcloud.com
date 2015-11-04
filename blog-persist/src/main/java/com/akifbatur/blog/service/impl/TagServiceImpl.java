@@ -1,5 +1,7 @@
 package com.akifbatur.blog.service.impl;
 
+import javax.annotation.PostConstruct;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +19,23 @@ import com.akifbatur.blog.service.TagService;
  * 
  */
 @Service("tagService")
-public class TagServiceImpl implements TagService 
+public class TagServiceImpl implements TagService
 {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(TagServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(TagServiceImpl.class);
 
-	@Autowired
-	private TagRepository tagRepository;
-	
-	@Override
-	@Transactional
-	public void saveTag(Tag tag) 
-	{
-		tagRepository.saveTag(tag);
-	}
+    @Autowired
+    private TagRepository tagRepository;
+
+    @Override
+    @Transactional
+    public void saveTag(Tag tag)
+    {
+        tagRepository.saveTag(tag);
+    }
+    
+    @PostConstruct
+    public void init()
+    {
+        logger.info("TagService initialized.");
+    }
 }

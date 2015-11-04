@@ -1,5 +1,7 @@
 package com.akifbatur.blog.repository.impl;
 
+import javax.annotation.PostConstruct;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,26 +22,31 @@ import com.akifbatur.blog.repository.LoginRepository;
 @Repository("loginRepository")
 public class LoginRepositoryImpl implements LoginRepository
 {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(LoginRepositoryImpl.class);
-	
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	@Override
-	public User getUserByUsername(String username) 
-	{
-		Session session = this.sessionFactory.getCurrentSession();
-		Query query = session.createQuery("from User where USERNAME = :username");
-		query.setString("username", username);
-		if(query.list().size()>0)
-		{
-			User user = (User) query.list().get(0);
-			return user;
-		}
-		else
-		{
-			return null;
-		}
-	}
+    private static final Logger logger = LoggerFactory.getLogger(LoginRepositoryImpl.class);
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    @Override
+    public User getUserByUsername(String username)
+    {
+        Session session = this.sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User where USERNAME = :username");
+        query.setString("username", username);
+        if (query.list().size() > 0)
+        {
+            User user = (User) query.list().get(0);
+            return user;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
+    @PostConstruct
+    public void init()
+    {
+        logger.info("LoginRepository initialized.");
+    }
 }

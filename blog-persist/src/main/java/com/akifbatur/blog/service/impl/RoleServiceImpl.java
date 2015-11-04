@@ -1,5 +1,7 @@
 package com.akifbatur.blog.service.impl;
 
+import javax.annotation.PostConstruct;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,6 @@ import com.akifbatur.blog.service.RoleService;
 @Service("roleService")
 public class RoleServiceImpl implements RoleService 
 {
-	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(RoleServiceImpl.class);
 
 	@Autowired
@@ -31,4 +32,10 @@ public class RoleServiceImpl implements RoleService
 	{
 		roleRepository.saveRole(role);
 	}
+	
+	@PostConstruct
+    public void init()
+    {
+        logger.info("RoleService initialized.");
+    }
 }

@@ -1,5 +1,7 @@
 package com.akifbatur.blog.service.impl;
 
+import javax.annotation.PostConstruct;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +19,23 @@ import com.akifbatur.blog.service.UserService;
  * 
  */
 @Service("userService")
-public class UserServiceImpl implements UserService 
+public class UserServiceImpl implements UserService
 {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
-	@Autowired
-	private UserRepository userRepository;
-	
-	@Override
-	@Transactional
-	public void saveUser(User user) 
-	{
-		userRepository.saveUser(user);
-	}
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    @Transactional
+    public void saveUser(User user)
+    {
+        userRepository.saveUser(user);
+    }
+    
+    @PostConstruct
+    public void init()
+    {
+        logger.info("UserService initialized.");
+    }
 }

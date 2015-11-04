@@ -1,5 +1,7 @@
 package com.akifbatur.blog.repository.impl;
 
+import javax.annotation.PostConstruct;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -17,18 +19,23 @@ import com.akifbatur.blog.repository.UserRepository;
  * 
  */
 @Repository("userRepository")
-public class UserRepositoryImpl implements UserRepository 
+public class UserRepositoryImpl implements UserRepository
 {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(UserRepositoryImpl.class);
-	
-	@Autowired
-	private SessionFactory sessionFactory;
+    private static final Logger logger = LoggerFactory.getLogger(UserRepositoryImpl.class);
 
-	@Override
-	public void saveUser(User user) 
-	{
-		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(user);
-	}	
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    @Override
+    public void saveUser(User user)
+    {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(user);
+    }
+    
+    @PostConstruct
+    public void init()
+    {
+        logger.info("UserRepository initialized.");
+    }
 }

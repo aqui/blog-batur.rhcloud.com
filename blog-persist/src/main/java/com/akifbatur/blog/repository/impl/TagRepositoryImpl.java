@@ -1,5 +1,7 @@
 package com.akifbatur.blog.repository.impl;
 
+import javax.annotation.PostConstruct;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -17,18 +19,23 @@ import com.akifbatur.blog.repository.TagRepository;
  * 
  */
 @Repository("tagRepository")
-public class TagRepositoryImpl implements TagRepository 
+public class TagRepositoryImpl implements TagRepository
 {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(TagRepositoryImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(TagRepositoryImpl.class);
 
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	@Override
-	public void saveTag(Tag tag) 
-	{
-		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(tag);
-	}
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    @Override
+    public void saveTag(Tag tag)
+    {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(tag);
+    }
+    
+    @PostConstruct
+    public void init()
+    {
+        logger.info("TagRepository initialized.");
+    }
 }

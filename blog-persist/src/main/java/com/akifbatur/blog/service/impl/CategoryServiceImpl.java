@@ -1,5 +1,7 @@
 package com.akifbatur.blog.service.impl;
 
+import javax.annotation.PostConstruct;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +19,23 @@ import com.akifbatur.blog.service.CategoryService;
  * 
  */
 @Service("categoryService")
-public class CategoryServiceImpl implements CategoryService 
+public class CategoryServiceImpl implements CategoryService
 {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(CategoryServiceImpl.class);
-	
-	@Autowired
-	private CategoryRepository categoryRepository;
-	
-	@Override
-	@Transactional
-	public void saveCategory(Category category) 
-	{
-		categoryRepository.saveCategory(category);
-	}
+    private static final Logger logger = LoggerFactory.getLogger(CategoryServiceImpl.class);
+
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    @Override
+    @Transactional
+    public void saveCategory(Category category)
+    {
+        categoryRepository.saveCategory(category);
+    }
+    
+    @PostConstruct
+    public void init()
+    {
+        logger.info("CategoryService initialized.");
+    }
 }

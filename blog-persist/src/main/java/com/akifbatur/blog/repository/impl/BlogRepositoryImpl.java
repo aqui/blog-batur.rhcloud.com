@@ -1,5 +1,7 @@
 package com.akifbatur.blog.repository.impl;
 
+import javax.annotation.PostConstruct;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -17,18 +19,23 @@ import com.akifbatur.blog.repository.BlogRepository;
  * 
  */
 @Repository("blogRepository")
-public class BlogRepositoryImpl implements BlogRepository 
+public class BlogRepositoryImpl implements BlogRepository
 {
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(BlogRepositoryImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(BlogRepositoryImpl.class);
 
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-	@Override
-	public void saveBlog(Blog blog) 
-	{
-		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(blog);
-	}
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    @Override
+    public void saveBlog(Blog blog)
+    {
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(blog);
+    }
+    
+    @PostConstruct
+    public void init()
+    {
+        logger.info("BlogRepository initialized.");
+    }
 }
