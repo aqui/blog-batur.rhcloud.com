@@ -8,7 +8,7 @@ import com.akifbatur.blog.entity.Tag;
  * Service interface for Service: TagServiceImpl
  * 
  */
-public interface TagService 
+public interface TagService
 {
-	public void saveTag(Tag tag);
+    public void saveTag(Tag tag);
 }

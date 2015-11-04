@@ -8,7 +8,7 @@ import com.akifbatur.blog.entity.Role;
  * Repository interface for Repository: RoleRepositoryImpl
  * 
  */
-public interface RoleRepository 
+public interface RoleRepository
 {
-	public void saveRole(Role role);
+    public void saveRole(Role role);
 }

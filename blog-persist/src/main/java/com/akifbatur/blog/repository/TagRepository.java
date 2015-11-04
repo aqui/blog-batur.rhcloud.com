@@ -8,7 +8,7 @@ import com.akifbatur.blog.entity.Tag;
  * Repository interface for Repository: TagRepositoryImpl
  * 
  */
-public interface TagRepository 
+public interface TagRepository
 {
-	public void saveTag(Tag tag);
+    public void saveTag(Tag tag);
 }

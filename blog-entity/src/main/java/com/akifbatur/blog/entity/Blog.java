@@ -24,105 +24,125 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "BLOG", catalog = "BLOG")
-public class Blog implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class Blog implements Serializable
+{
+    private static final long serialVersionUID = 1L;
 
-	public Blog() {
+    public Blog()
+    {
 
-	}
+    }
 
-	@Id
-	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-	@Column(name = "BLOG_TITLE", unique = true, nullable = false)
-	private String blogTitle;
+    @Column(name = "BLOG_TITLE", unique = true, nullable = false)
+    private String blogTitle;
 
-	@Column(name = "BLOG_BODY", unique = true, nullable = false)
-	private String blogBody;
+    @Column(name = "BLOG_BODY", unique = true, nullable = false)
+    private String blogBody;
 
-	@Column(name = "CREATE_DATE", nullable = false)
-	private Date createDate;
+    @Column(name = "CREATE_DATE", nullable = false)
+    private Date createDate;
 
-	@Column(name = "EDIT_DATE", nullable = false)
-	private Date editDate;
+    @Column(name = "EDIT_DATE", nullable = false)
+    private Date editDate;
 
-	@ManyToOne
-	@JoinTable(name = "BLOG_CATEGORY", joinColumns = { @JoinColumn(name = "BLOG_ID") }, inverseJoinColumns = {
-			@JoinColumn(name = "CATEGORY_ID") })
-	private Category category;
+    @ManyToOne
+    @JoinTable(name = "BLOG_CATEGORY", joinColumns =
+    { @JoinColumn(name = "BLOG_ID") }, inverseJoinColumns =
+    { @JoinColumn(name = "CATEGORY_ID") })
+    private Category category;
 
-	@ManyToMany
-	@JoinTable(name = "BLOG_TAG", joinColumns = @JoinColumn(name = "BLOG_ID") , inverseJoinColumns = @JoinColumn(name = "TAG_ID") )
-	private List<Tag> tags = new ArrayList<Tag>();
+    @ManyToMany
+    @JoinTable(name = "BLOG_TAG", joinColumns = @JoinColumn(name = "BLOG_ID") , inverseJoinColumns = @JoinColumn(name = "TAG_ID") )
+    private List<Tag> tags = new ArrayList<Tag>();
 
-	@ManyToOne
-	@JoinTable(name = "BLOG_USER", joinColumns = { @JoinColumn(name = "BLOG_ID") }, inverseJoinColumns = {
-			@JoinColumn(name = "USER_ID") })
-	private User user;
+    @ManyToOne
+    @JoinTable(name = "BLOG_USER", joinColumns =
+    { @JoinColumn(name = "BLOG_ID") }, inverseJoinColumns =
+    { @JoinColumn(name = "USER_ID") })
+    private User user;
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId()
+    {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id)
+    {
+        this.id = id;
+    }
 
-	public String getBlogTitle() {
-		return blogTitle;
-	}
+    public String getBlogTitle()
+    {
+        return blogTitle;
+    }
 
-	public void setBlogTitle(String blogTitle) {
-		this.blogTitle = blogTitle;
-	}
+    public void setBlogTitle(String blogTitle)
+    {
+        this.blogTitle = blogTitle;
+    }
 
-	public String getBlogBody() {
-		return blogBody;
-	}
+    public String getBlogBody()
+    {
+        return blogBody;
+    }
 
-	public void setBlogBody(String blogBody) {
-		this.blogBody = blogBody;
-	}
+    public void setBlogBody(String blogBody)
+    {
+        this.blogBody = blogBody;
+    }
 
-	public Date getCreateDate() {
-		return createDate;
-	}
+    public Date getCreateDate()
+    {
+        return createDate;
+    }
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
+    public void setCreateDate(Date createDate)
+    {
+        this.createDate = createDate;
+    }
 
-	public Date getEditDate() {
-		return editDate;
-	}
+    public Date getEditDate()
+    {
+        return editDate;
+    }
 
-	public void setEditDate(Date editDate) {
-		this.editDate = editDate;
-	}
+    public void setEditDate(Date editDate)
+    {
+        this.editDate = editDate;
+    }
 
-	public Category getCategory() {
-		return category;
-	}
+    public Category getCategory()
+    {
+        return category;
+    }
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+    public void setCategory(Category category)
+    {
+        this.category = category;
+    }
 
-	public List<Tag> getTags() {
-		return tags;
-	}
+    public List<Tag> getTags()
+    {
+        return tags;
+    }
 
-	public void setTags(List<Tag> tags) {
-		this.tags = tags;
-	}
+    public void setTags(List<Tag> tags)
+    {
+        this.tags = tags;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser()
+    {
+        return user;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setUser(User user)
+    {
+        this.user = user;
+    }
 }

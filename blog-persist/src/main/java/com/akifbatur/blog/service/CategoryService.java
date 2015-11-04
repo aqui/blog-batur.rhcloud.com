@@ -8,7 +8,7 @@ import com.akifbatur.blog.entity.Category;
  * Service interface for Service: CategoryServiceImpl
  * 
  */
-public interface CategoryService 
+public interface CategoryService
 {
-	public void saveCategory(Category category);
+    public void saveCategory(Category category);
 }

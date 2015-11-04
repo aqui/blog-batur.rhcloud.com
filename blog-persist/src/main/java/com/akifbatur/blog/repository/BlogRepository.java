@@ -8,7 +8,7 @@ import com.akifbatur.blog.entity.Blog;
  * Repository interface for Repository: BlogRepositoryImpl
  * 
  */
-public interface BlogRepository 
+public interface BlogRepository
 {
-	public void saveBlog(Blog blog);
+    public void saveBlog(Blog blog);
 }

@@ -6,6 +6,7 @@ package com.akifbatur.blog.service;
  * Repository interface for Repository: LoginRepositoryImpl
  * 
  */
-public interface LoginService {
-	
+public interface LoginService
+{
+
 }

@@ -8,7 +8,7 @@ import com.akifbatur.blog.entity.Role;
  * Service interface for Service: RoleServiceImpl
  * 
  */
-public interface RoleService 
+public interface RoleService
 {
-	public void saveRole(Role role);
+    public void saveRole(Role role);
 }

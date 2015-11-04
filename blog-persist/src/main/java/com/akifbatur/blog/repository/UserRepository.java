@@ -8,7 +8,7 @@ import com.akifbatur.blog.entity.User;
  * Repository interface for Repository: UserRepositoryImpl
  * 
  */
-public interface UserRepository 
+public interface UserRepository
 {
-	public void saveUser(User user);
+    public void saveUser(User user);
 }

@@ -8,7 +8,7 @@ import com.akifbatur.blog.entity.Category;
  * Repository interface for Repository: CategoryRepositoryImpl
  * 
  */
-public interface CategoryRepository 
+public interface CategoryRepository
 {
-	public void saveCategory(Category category);
+    public void saveCategory(Category category);
 }

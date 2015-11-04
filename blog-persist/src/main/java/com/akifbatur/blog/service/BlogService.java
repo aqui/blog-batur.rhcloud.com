@@ -8,7 +8,7 @@ import com.akifbatur.blog.entity.Blog;
  * Service interface for Service: BlogServiceImpl
  * 
  */
-public interface BlogService 
+public interface BlogService
 {
-	public void saveBlog(Blog blog);
+    public void saveBlog(Blog blog);
 }
