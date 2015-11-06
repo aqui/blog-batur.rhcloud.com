@@ -30,7 +30,7 @@ public class TagRepositoryImpl implements TagRepository
     public void saveTag(Tag tag)
     {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(tag);
+        session.save(tag);
     }
     
     @PostConstruct

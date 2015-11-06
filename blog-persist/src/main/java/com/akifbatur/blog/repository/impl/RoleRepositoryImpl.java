@@ -30,7 +30,7 @@ public class RoleRepositoryImpl implements RoleRepository
     public void saveRole(Role role)
     {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(role);
+        session.save(role);
     }
     
     @PostConstruct

@@ -11,4 +11,6 @@ import com.akifbatur.blog.entity.User;
 public interface UserRepository
 {
     public void saveUser(User user);
+    
+    public User getUserByUsername(String username);
 }

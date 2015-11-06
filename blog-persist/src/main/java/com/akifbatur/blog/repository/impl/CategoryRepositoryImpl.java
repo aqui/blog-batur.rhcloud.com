@@ -30,7 +30,7 @@ public class CategoryRepositoryImpl implements CategoryRepository
     public void saveCategory(Category category)
     {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(category);
+        session.save(category);
     }
     
     @PostConstruct

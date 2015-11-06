@@ -9,11 +9,14 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-	<context:component-scan base-package="com.akifbatur.blog.service"/>
-	
-	<context:component-scan base-package="com.akifbatur.blog.repository"/>
-	
+	<context:annotation-config></context:annotation-config>
+		
 	<beans:import resource="spring-datasource.xml"/>
+	
+	<beans:bean name="loginService" class="com.akifbatur.blog.service.impl.LoginServiceImpl"></beans:bean>
+	<beans:bean name="userRepository" class="com.akifbatur.blog.repository.impl.UserRepositoryImpl"></beans:bean>
+	<beans:bean name="customAuthenticationSuccessHandler" class="com.akifbatur.blog.component.CustomAuthenticationSuccessHandler"></beans:bean>
+	<beans:bean name="customAuthenticationFailureHandler" class="com.akifbatur.blog.component.CustomAuthenticationFailureHandler"></beans:bean>
 	
 	<jdbc:initialize-database data-source="dataSource">
 		<jdbc:script location="classpath:init-db.sql" />
@@ -57,10 +60,6 @@
 			<password-encoder ref="encoder"/>
 		</authentication-provider>
 	</authentication-manager>
-
-	<beans:bean class="com.akifbatur.blog.custom.CustomAuthenticationSuccessHandler" name="customAuthenticationSuccessHandler"/>
-	
-	<beans:bean class="com.akifbatur.blog.custom.CustomAuthenticationFailureHandler" name="customAuthenticationFailureHandler"/>
 	
 	<beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
 		<beans:constructor-arg name="strength" value="10"/>

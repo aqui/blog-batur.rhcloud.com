@@ -2,6 +2,7 @@ package com.akifbatur.blog.repository.impl;
 
 import javax.annotation.PostConstruct;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -30,12 +31,29 @@ public class UserRepositoryImpl implements UserRepository
     public void saveUser(User user)
     {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(user);
+        session.save(user);
     }
     
     @PostConstruct
     public void init()
     {
         logger.info("UserRepository initialized.");
+    }
+
+    @Override
+    public User getUserByUsername(String username)
+    {
+        Session session = this.sessionFactory.getCurrentSession();
+        Query query = session.createQuery("from User where USERNAME = :username");
+        query.setString("username", username);
+        if (query.list().size() > 0)
+        {
+            User user = (User) query.list().get(0);
+            return user;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

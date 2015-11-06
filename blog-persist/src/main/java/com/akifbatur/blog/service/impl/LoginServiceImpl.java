@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.akifbatur.blog.entity.User;
 import com.akifbatur.blog.entity.Role;
-import com.akifbatur.blog.repository.LoginRepository;
+import com.akifbatur.blog.repository.UserRepository;
 import com.akifbatur.blog.service.LoginService;
 
 /**
@@ -35,14 +35,14 @@ public class LoginServiceImpl implements LoginService, UserDetailsService
     private static final Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
 
     @Autowired
-    private LoginRepository loginRepository;
+    private UserRepository userRepository;
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
     {
         logger.info("User "+ username +" is trying to login.");
-        User user = loginRepository.getUserByUsername(username);
+        User user = userRepository.getUserByUsername(username);
         if (user == null)
         {
             logger.error("User "+ username +" is not found.");

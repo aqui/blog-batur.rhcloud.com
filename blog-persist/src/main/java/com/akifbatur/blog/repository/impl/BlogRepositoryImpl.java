@@ -30,7 +30,7 @@ public class BlogRepositoryImpl implements BlogRepository
     public void saveBlog(Blog blog)
     {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(blog);
+        session.save(blog);
     }
     
     @PostConstruct
