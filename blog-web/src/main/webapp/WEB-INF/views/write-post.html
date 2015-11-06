@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="../layout/layout">
+<head>
+<title>write post</title>
+</head>
+<body>
+	<div id="content" layout:fragment="content" class="col-lg-9">
+		<form>
+			<div class="form-group">
+				<label for="exampleInputEmail1">New Blog Category</label> <input
+					type="email" class="form-control" id="exampleInputEmail1"
+					placeholder="New Blog Category" />
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Blog Categories</label> <select
+					class="form-control">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Post Title</label> <input
+					type="email" class="form-control" id="exampleInputEmail1"
+					placeholder="Post Title" />
+			</div>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Tags</label> <input type="email"
+					class="form-control" id="exampleInputEmail1" placeholder="Tags" />
+			</div>
+			<button type="submit" class="btn btn-default">Post</button>
+		</form>
+	</div>
+</body>
+</html>

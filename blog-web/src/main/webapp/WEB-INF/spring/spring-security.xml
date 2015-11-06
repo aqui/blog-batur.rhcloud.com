@@ -13,17 +13,19 @@
 		
 	<beans:import resource="spring-datasource.xml"/>
 	
-	<beans:bean name="loginService" class="com.akifbatur.blog.service.impl.LoginServiceImpl"></beans:bean>
-	<beans:bean name="userRepository" class="com.akifbatur.blog.repository.impl.UserRepositoryImpl"></beans:bean>
-	<beans:bean name="customAuthenticationSuccessHandler" class="com.akifbatur.blog.component.CustomAuthenticationSuccessHandler"></beans:bean>
-	<beans:bean name="customAuthenticationFailureHandler" class="com.akifbatur.blog.component.CustomAuthenticationFailureHandler"></beans:bean>
+	<beans:bean name="loginService" class="com.akifbatur.blog.persist.service.impl.LoginServiceImpl"></beans:bean>
+	<beans:bean name="userRepository" class="com.akifbatur.blog.persist.repository.impl.UserRepositoryImpl"></beans:bean>
+	<beans:bean name="customAuthenticationSuccessHandler" class="com.akifbatur.blog.web.component.CustomAuthenticationSuccessHandler"></beans:bean>
+	<beans:bean name="customAuthenticationFailureHandler" class="com.akifbatur.blog.web.component.CustomAuthenticationFailureHandler"></beans:bean>
 	
 	<jdbc:initialize-database data-source="dataSource">
 		<jdbc:script location="classpath:init-db.sql" />
 	</jdbc:initialize-database>
 	
+	<http pattern="/resources/**" security="none"/>
+	
 	<!-- Enable use-expressions -->
-	<http auto-config="true" use-expressions="true">
+	<http auto-config="true" use-expressions="true" >
 	
 		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/author**" access="hasRole('ROLE_USER')" />
