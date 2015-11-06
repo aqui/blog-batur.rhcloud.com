@@ -7,7 +7,11 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 	
-	<context:component-scan base-package="com.akifbatur.blog" />
+	<context:component-scan base-package="com.akifbatur.blog">
+		<context:exclude-filter type="regex" expression="com.akifbatur.blog.component.CustomAuthenticationSuccessHandler"/>
+		<context:exclude-filter type="regex" expression="com.akifbatur.blog.component.CustomAuthenticationFailureHandler"/>
+		<context:exclude-filter type="regex" expression="com.akifbatur.blog.service.impl.LoginServiceImpl"/>
+	</context:component-scan>
 	
 	<mvc:default-servlet-handler />
 	
